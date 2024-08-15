@@ -1,11 +1,14 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/myshop', [WebController::class, 'webPage'])->name("web.myshop");
 
 Route::get('/dashboard', function () {
     return view('dashboard');
