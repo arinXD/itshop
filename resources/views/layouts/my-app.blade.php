@@ -285,12 +285,29 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card mb-4">
-                        <div class="card-header pb-0 border-bottom">
-                            <h6>ข้อมูลร้านค้า</h6>
+                        <div class="card-header pb-0 border-bottom d-flex gap-4">
+                            <h6>
+                                <a style="{{ Request::path() == 'my-shop' ? 'color: #5e72e4;' : '' }}"
+                                    href="/my-shop">
+                                    ข้อมูลร้านค้า
+                                </a>
+                            </h6>
+                            <h6>
+                                <a style="{{ Request::path() == 'product_types' ? 'color: #5e72e4;' : '' }}"
+                                    href="/product_types">หมวดหมู่สินค้า</a>
+                            </h6>
+                            <h6>
+                                <a style="{{ Request::path() == 'product_types_test' ? 'color: #5e72e4;' : '' }}"
+                                    href="/product_types_test">หมวดหมู่สินค้า</a>
+                            </h6>
+                            <h6>
+                                <a style="{{ Request::path() == 'products' ? 'color: #5e72e4;' : '' }}"
+                                    href="/products">สินค้า</a>
+                            </h6>
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="table-responsive p-0">
-                                @yield("content")
+                                @yield('content')
                             </div>
                         </div>
                     </div>

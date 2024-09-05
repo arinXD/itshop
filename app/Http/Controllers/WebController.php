@@ -9,18 +9,21 @@ use Illuminate\Http\Request;
 
 class WebController extends Controller
 {
-    function webPage(){
+    function webPage(Request $request)
+    {
         $users = User::all();
         $productTypes = ProductType::all();
         $address = "IT CP KKU";
         $mobilePhone = "0987654321";
         $location = "Khon Kaen";
+        $currentCategoryId = $request->query('category') ?? 1;
         return view("web.index", compact(
             "users",
             "address",
             "mobilePhone",
             "location",
-            "productTypes"
+            "productTypes",
+            "currentCategoryId"
         ));
     }
 }
