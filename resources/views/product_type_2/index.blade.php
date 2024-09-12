@@ -14,11 +14,13 @@
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">#</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">หมวดหมู่
                                     </th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                        จำนวนรายการสินค้า</th>
-                                    <th
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        เครื่องมือ</th>
+                                    @auth
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            จำนวนรายการสินค้า</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            เครื่องมือ</th>
+                                    @endauth
                                 </tr>
                             </thead>
                             <tbody>
@@ -39,21 +41,23 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        <td>
-                                            <p class="text-xs font-weight-bold mb-0">99</p>
-                                            <p class="text-xs text-secondary mb-0">ชิ้น</p>
-                                        </td>
-                                        <td class="align-middle">
-                                            <form action="{{ route('product_types.destroy', $ptype->id) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <a href="#" class="btn btn-outline-success px-3 py-2"><i
-                                                        class="fa fa-pencil"></i> แก้ไข</a>
-                                                <button type="submit" class="btn btn-outline-danger px-3 py-2"
-                                                    onclick="return confirm('คุณต้องการลบข้อมูลหรือไม่?')"><i
-                                                        class="fa fa-trash"></i> ลบ</button>
-                                            </form>
-                                        </td>
+                                        @auth
+                                            <td>
+                                                <p class="text-xs font-weight-bold mb-0">99</p>
+                                                <p class="text-xs text-secondary mb-0">ชิ้น</p>
+                                            </td>
+                                            <td class="align-middle">
+                                                <form action="{{ route('product_types.destroy', $ptype->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <a href="#" class="btn btn-outline-success px-3 py-2"><i
+                                                            class="fa fa-pencil"></i> แก้ไข</a>
+                                                    <button type="submit" class="btn btn-outline-danger px-3 py-2"
+                                                        onclick="return confirm('คุณต้องการลบข้อมูลหรือไม่?')"><i
+                                                            class="fa fa-trash"></i> ลบ</button>
+                                                </form>
+                                            </td>
+                                        @endauth
                                     </tr>
                                 @empty
                                     <tr>

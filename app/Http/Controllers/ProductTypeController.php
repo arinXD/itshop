@@ -7,20 +7,31 @@ use App\Models\ProductType;
 
 class ProductTypeController extends Controller
 {
+    // public function __construct()
+    // {
+    //     $this->middleware('auth', ['only' => [
+    //         'create',
+    //         'store',
+    //         'edit',
+    //         'delete'
+    //     ]]);
+    //     // or
+    //     $this->middleware('auth', ['except' => ['index', 'show']]);
+    // }
     public function index(Request $rq)
-    {
-        $product_ty = ProductType::all();
-        $currentCategoryId = $rq->query('category') ?? $product_ty[0]->id;
-        return view('product_type.index', compact(
-            'product_ty',
-            'currentCategoryId',
-        ));
-    }
-    public function index2(Request $rq)
     {
         $ptypes = ProductType::all();
         return view('product_type_2.index', compact(
             'ptypes',
+        ));
+    }
+    public function index2(Request $rq)
+    {
+        $product_ty = ProductType::all();
+        $currentCategoryId = $rq->query('category') ?? count($product_ty) > 0 ? $product_ty[0]->id : 0;
+        return view('product_type.index', compact(
+            'product_ty',
+            'currentCategoryId',
         ));
     }
 
